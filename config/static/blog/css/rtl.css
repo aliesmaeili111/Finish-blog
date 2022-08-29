@@ -1,61 +1,63 @@
 @font-face {
     font-family: 'Sahel';
     src: url('Tanha.woff');
-   
+
 }
 
-body{
+body {
     direction: rtl;
     text-align: right;
     font-family: 'Sahel';
     font-size: 17px;
 }
 
-.navbar-nav{
+.navbar-nav {
     margin-left: initial !important;
     margin-right: auto;
 }
 
-.post-meta{
+.post-meta {
     text-align: left;
 }
 
-.pager-btn>a{
-    font-size: 1.1em;    
+.pager-btn>a {
+    font-size: 1.1em;
 }
 
 
-.site-heading h1{
+.site-heading h1 {
     font-size: 38px !important;
 }
 
-.site-heading .time{
+.site-heading .time {
     font-size: 1em;
 }
 
-.post-preview > a > .post-title {
+.post-preview>a>.post-title {
     font-size: 32px !important;
 }
-.post-preview > a > .post-subtitle {
+
+.post-preview>a>.post-subtitle {
     font-weight: 400;
     font-size: 1.2em !important;
 }
-.post-preview > .post-meta {
+
+.post-preview>.post-meta {
     font-size: 1em !important;
 }
+
 /* social btn */
-.share-menu{
+.share-menu {
     position: relative;
     width: 220px;
     height: 120px;
 }
 
-.share-menu .share-btn
-{
+.share-menu .share-btn {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 80px;
     height: 80px;
     background: #00acee;
@@ -80,11 +82,11 @@ body{
     display: inline;
 }
 
-.share-menu .social-btn{
+.share-menu .social-btn {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 75px;
     height: 75px;
     background: #eee8e8;
@@ -97,43 +99,45 @@ body{
     transition: all 300ms ease-in-out 100ms;
 }
 
-.share-menu.active div:nth-child(2){
+.share-menu.active div:nth-child(2) {
     top: -25%;
     left: 50%;
-    transform: translate(-50%,-100%);
+    transform: translate(-50%, -100%);
     transition: all 300ms ease-in-out 0ms;
 }
 
-.share-menu.active div:nth-child(3){
+.share-menu.active div:nth-child(3) {
     top: 0%;
     left: 100%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 300ms ease-in-out 100ms;
 }
 
-.share-menu.active div:nth-child(4){
+.share-menu.active div:nth-child(4) {
     top: 100%;
     left: 100%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 300ms ease-in-out 180ms;
 }
 
-.share-menu.active div:nth-child(5){
+.share-menu.active div:nth-child(5) {
     top: 125%;
     left: 50%;
-    transform: translate(-50%,0%);
+    transform: translate(-50%, 0%);
     transition: all 300ms ease-in-out 260ms;
 }
-.share-menu.active div:nth-child(6){
+
+.share-menu.active div:nth-child(6) {
     top: 100%;
     left: 0%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 300ms ease-in-out 350ms;
 }
-.share-menu.active div:nth-child(7){
+
+.share-menu.active div:nth-child(7) {
     top: 0%;
     left: 0%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 300ms ease-in-out 430ms;
 }
 
@@ -141,7 +145,7 @@ body{
 
 /* menu toggle */
 
-.toggle{
+.toggle {
     position: relative;
     width: 50px;
     height: 50px;
@@ -154,7 +158,8 @@ body{
     cursor: pointer;
     overflow: hidden;
 }
-.toggle span{
+
+.toggle span {
     position: absolute;
     width: 40px;
     height: 4px;
@@ -163,31 +168,35 @@ body{
     transition: 0.5s;
 }
 
-.toggle span:nth-child(1){
+.toggle span:nth-child(1) {
     transform: translateY(-15px);
     width: 25px;
     left: 6px;
 }
-.toggle span:nth-child(2){
+
+.toggle span:nth-child(2) {
     transform: translateY(15px);
     width: 18px;
     left: 6px;
 }
 
-.toggle.active span:nth-child(3){
+.toggle.active span:nth-child(3) {
     transform: translateX(60px);
-   
+
 }
-.toggle.active span:nth-child(1){
+
+.toggle.active span:nth-child(1) {
     transform: translateY(0px) rotate(45deg);
-    width: 40px; 
+    width: 40px;
     transition-delay: 0.125s;
 }
-.toggle.active span:nth-child(2){
+
+.toggle.active span:nth-child(2) {
     transform: translateY(0px) rotate(315deg);
     width: 40px;
     transition-delay: 0.25s;
 }
+
 /* end of menu toggle */
 
 /* button pager */
@@ -206,7 +215,8 @@ body{
     z-index: 0;
     border-radius: 50px;
 }
-div.pager-btn>a{
+
+div.pager-btn>a {
     border-radius: 50px;
     font-size: 15px;
     font-weight: bold;
@@ -218,7 +228,7 @@ div.pager-btn>a{
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
     top: -2px;
-    left:-2px;
+    left: -2px;
     background-size: 400%;
     z-index: -1;
     filter: blur(5px);
@@ -259,22 +269,50 @@ div.pager-btn>a{
 }
 
 @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
+
 /* end of button pager */
 
-.popular_articles_css{
-    border:1px solid #bfbfbf;
-    padding:15px ;
-    border-radius:5px ;
-    width:240px ;
-    position:absolute;
-    left:-240px ;
-    top:0 ;
-    box-shadow:-5px 5px #d5d5d5 ;
+#popular_articles_css {
+    position: absolute;
+    border: 1px solid #bfbfbf;
+    padding: 15px;
+    left:60px;
+
+    border-radius: 10px;
+    width: 240px;
+    box-shadow: -4px -3px 6px -5px #d5d5d5;
 }
-.popular_articles_css h2{
-    font-size:50px
+#popular_articles_css hr{
+    border:1px solid #a25caf !important;
+}
+
+#popular_articles_css h2 {
+    font-size:25px;
+}
+#hr{
+    border:1px dashed #a25cbb;
+}
+
+
+@media (max-width:400px){
+    #popular_articles_css{
+        display:none;
+    }
+}
+@media (max-width:1180px){
+    #hr{
+        display:none;
+    }
 }

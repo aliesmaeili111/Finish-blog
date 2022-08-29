@@ -1,4 +1,4 @@
-<div class="popular_articles_css">
+<div id="popular_articles_css">
     <h2 class="h4">
         مقالات پر بازدید ماه
     </h2><hr>
@@ -7,4 +7,4 @@
             <a href="{% url 'blog:detail' a.slug %}">{{a.title}}</a>
         </div>  
     {% endfor %}
-</div><hr>
+</div><hr id="hr">
