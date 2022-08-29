@@ -1,0 +1,13 @@
+{% extends 'blog/list.html' %}
+
+{% block header %}
+    <h4 class="rounded-pill border border-2 shadow alert alert-info text-center"><small class="text-black">دسته بندی:</small> {{category.title}}</h4>
+{% endblock %}
+
+{% block previous_page_url %}
+    {% url 'blog:category' category.slug page_obj.previous_page_number %}
+{% endblock %}
+
+{% block next_page_url %}
+    {% url 'blog:category' category.slug page_obj.next_page_number %}
+{% endblock %}

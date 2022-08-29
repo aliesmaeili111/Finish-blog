@@ -1,0 +1,116 @@
+{% load static %}
+{% load base_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>
+            Ali Blog {% block title %} {% endblock %}
+        </title>
+        <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/blog.png' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'blog/css/styles.css' %}" rel="stylesheet" />
+ 
+        <link href="{% static 'blog/css/rtl.css' %}" rel="stylesheet" />
+        
+        <!-- start ratings static app -->
+        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+        
+        <!-- end of star ratings -->
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" href="{% url 'blog:home' %}">{% title %}</a>|
+                <small class="mx-1 text-primary">خوش آمدید {{user.get_full_name}}</small>
+                <a class="navbar-brand" href="{% url 'logout' %}">خروج</a>
+                {% else %}
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-link btn-lg">Sign in with Google</a>
+                {% endif %}
+                
+                <button class="navbar-toggler border-0 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    
+                    <div class="toggle ">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+               {% cetagory_navbar %}
+            </div>
+        </nav>
+      
+       {% block main %}
+       
+       {% endblock %}
+        <!-- Footer-->
+
+        <div class="d-flex justify-content-center my-5 ">
+            <div class="share-menu">
+
+                <div class="share-btn" onclick="toggleShareMenu()">
+                    <i class="fa fa-share-alt"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-facebook-f"></a></i>
+                </div>
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-pinterest"></i></a>
+                </div>
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-github"></i></a>
+                </div>
+                <div class="social-btn">
+                    <a href=""><i class="fab fa-telegram"></i></a>
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+
+        <!-- script for social button link -->
+        <script>
+
+            function toggleShareMenu(){
+                document.getElementsByClassName("share-menu")
+                [0].classList.toggle("active");
+            }
+
+        </script>
+        <!-- end of script for social button link -->
+        
+        <!-- end of Footer-->
+       
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'blog/js/scripts.js' %}"></script>
+
+        <script>
+            let menutoggle = document.querySelector('.toggle');
+            menutoggle.onclick=function(){
+                menutoggle.classList.toggle('active')
+            }
+        </script>
+    </body>
+</html>

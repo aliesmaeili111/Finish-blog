@@ -1,0 +1,8 @@
+{% extends "star_ratings/widget_base.html" %}
+{% block rating_detail %}
+    {% if not user.is_authenticated %}
+        <div>
+            <small>برای رای دادن ابتدا باید <a href="{% url 'login' %}" title="ورود به سایت" style="font-size: 22px;color:#0d6efd;">وارد</a> شوید</small>
+        </div>
+    {% endif %}
+{% endblock %}

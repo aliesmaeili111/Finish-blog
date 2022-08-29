@@ -1,0 +1,131 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'registration/login/css/style.css' %}">
+    <title>  ثبت نام در سایت</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/blog.png' %}" />
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+    {% if form.non_field_errors %}
+        <div class="errors">
+            {% for error in form.non_field_errors %}
+                    <span>{{error}}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="container">
+      
+        <!-- form begin -->
+        <form method="post" >
+            {% csrf_token %}
+
+            <!-- title form -->
+            <h3> ثبت نام در سایت </h3>
+            
+            <!-- end of title form -->
+
+            <div class="input_box">
+                <span>نام کاربری</span>
+                <div class="box">
+                    <div class="icon"><ion-icon name="person-add"></ion-icon></div>
+                   {{form.username}}
+                </div>
+            </div>
+            {% if form.username.errors %}
+                <span>{{form.username.errors}}</span>
+            {% endif %}
+
+            <div class="input_box">
+                <span>ایمیل </span>
+                <div class="box">
+                    <div class="icon">
+                        <i class="uil uil-envelope-alt"></i>
+                    </div>
+                   {{form.email}}
+                </div>
+            </div>
+            {% if form.email.errors %}
+                <span>{{form.email.errors}}</span>
+            {% endif %}
+            
+            <div class="input_box">
+                <span> گذرواژه </span>
+                <div class="box">
+                    <div class="icon"><ion-icon name="unlock"></ion-icon></div>
+                   {{form.password1|add_class:"input"}}
+                   <i class="uil uil-eye-slash eye toggle"></i>
+                </div>
+            </div>
+            {% if form.password1.errors %}
+                    <span>{{form.password1.errors}}</span>
+            {% endif %}
+
+            <div class="input_box">
+                <span> تایید گذرواژه</span>
+                <div class="box">
+                    <div class="icon"><ion-icon name="unlock"></ion-icon></div>
+                   {{form.password2|add_class:"input"}}
+                   
+                </div>
+            </div>
+            {% if form.password2.errors %}
+                <span>{{form.password2.errors}}</span>
+            {% endif %}
+            
+
+            <label for="label">
+                <input type="checkbox" id="label">  مرا بخاطر بسپار
+            </label>
+
+            <!-- click Submit -->
+
+           <div class="input_box">
+                <div class="box">
+                    <input type="submit" value="ثبت نام">
+                </div>
+           </div>
+
+           <!-- end of click Submit -->
+
+           <!-- link remember me -->
+           <a href="{% url 'login' %}" class="forgot" style="float:right">اگر حسابی دارید وارد شوید</a>
+            
+           <!-- end of link -->
+        </form>
+        <!-- end of form begin -->
+    </div>
+
+    <!-- script for icon -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- end of script icon -->
+
+    <!-- script toggle for password -->
+    <script>
+
+
+        const toggle = document.querySelector(".toggle"),
+              input = document.querySelector('.input');
+
+              toggle.addEventListener('click',() =>{
+                if(input.type ==='password'){
+                    input.type = 'text';
+                    toggle.classList.replace("uil-eye-slash","uil-eye");
+                }else{
+                    input.type = "password";
+                    toggle.classList.replace("uil-eye","uil-eye-slash");
+                }
+            })
+    </script>
+    <!-- end of script toggle for password -->
+</body>
+</html>

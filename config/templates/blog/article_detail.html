@@ -1,0 +1,66 @@
+{% extends 'blog/base.html' %}
+{% load comment_tags %}  {# Loading the template tag #}
+{% load static %}
+{% load humanize %}
+
+{% load base_tags %}
+
+{% load ratings %}
+{% block title %} | {{object.title}}{% endblock %}
+{% block main %}
+      <!-- Page Header-->
+      <header class="masthead" style="background-image: url('{{object.thumbnail.url}}')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    
+                    <div class="site-heading">
+                        <h1>
+                            {{object.title}}
+                        </h1>
+                        <div class="time">
+                            {{object.publish|naturaltime}}
+                            {% if article.is_special %}
+                                <span style="font-size:18px" class="badge bg-danger rounded text-dark">ویژه</span>
+                            {% endif %}
+                            
+                            <div >{% ratings object %}</div>
+                            <div >
+                                <small>بازدیدها: {{ object.hits.count }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Post Content-->
+    <div style="text-align:right; ">
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5 ">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        {% popular_articles %}
+                        {% if object.is_special %}
+                            {% if user.is_authenticated and user.is_special or user == object.author or user.is_superuser %}
+                                {{object.description|safe}}
+                            {% else %}
+                            {{article.description|striptags|truncatewords:30}}
+                            <p class="alert text-center bg-primary text-white rounded-pill">
+                                این مقاله ویژه است و برای مشاهده آن باید   
+                                <a href="#" class=' border-top-0 border-bottom-0 border-2 p-1 border-light text-warning text-decoration-none alert-link'>اشتراک ویژه</a>
+                                تهیه کنید.
+                            </p>
+                            {% endif %}
+                        {% else %}
+                            {{object.description|safe}}
+                        {% endif %}
+                        
+                        {% render_comments object request %}
+                        {% include_bootstrap %}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+{% endblock %}

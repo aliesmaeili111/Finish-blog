@@ -1,0 +1,8 @@
+{% load base_tags %}
+<a href="{% url link %}" class="nav-link 
+{% if request.resolver_match.url_name == link_name %} 
+    active
+{% endif %}">
+    <span>{{name_js}}</span>
+    <p>{{content}}</p>
+  </a>

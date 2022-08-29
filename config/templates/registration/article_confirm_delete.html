@@ -1,0 +1,24 @@
+{% extends 'registration/base.html' %}
+{% block title %}{% endblock %}
+{% block title-meta %}
+افزودن مقالات  
+{% endblock %}
+
+{% block main %}
+<div class="col-md-8 mx-auto ">
+    <div class="card card-danger justify-content-center">
+        <div class="card-header text-center">
+            <h3 class="card-title mb-0 float-left py-2 ">حذف مقاله</h3>
+        </div>
+        <div class="card-body py-4">
+            <form action="" method="post">
+                {% csrf_token %}
+                    <p class="py-3">آیا از حذف مقاله <span class="badge bg-light text-danger text-lg">{{object}}</span> از <span class="badge bg-light">{{object.author.get_full_name}} </span> مطمئن هستید؟</p>
+                    <input type="submit" value="حذف" class="btn btn-danger btn-block ">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,12 @@
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ms-auto py-4 py-lg-0 ">
+        <li class="nav-item "><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:home' %}">خانه</a></li>
+        {% for cat in category %}
+            <li class="nav-item "><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:category' cat.slug %}">{{cat.title}}</a></li>
+        {% endfor %}
+    </ul>
+    <form class ="form-inline mt-2 d-flex " action="{% url 'blog:search' %}">
+        <input type="search" style="border-radius: 15px;margin:0 10px " name="q"  placeholder="جستجو متن" class="form-control">
+        <button class="btn btn-success text-light shadow-lg" style="padding: 8px;border-radius: 15px;font-size: 1rem;">جستجو</button>
+    </form>
+</div>

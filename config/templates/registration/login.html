@@ -1,0 +1,107 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'registration/login/css/style.css' %}">
+    <title>ورود به سایت</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'blog/assets/blog.png' %}" />
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+    {% if form.non_field_errors %}
+        <div class="errors">
+            {% for error in form.non_field_errors %}
+                    <span>{{error}}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="container">
+      
+        <!-- form begin -->
+        <form method="post" >
+            {% csrf_token %}
+
+            <!-- title form -->
+            <h3>ورود به سایت</h3>
+            
+            <!-- end of title form -->
+
+            <div class="input_box">
+                <span>نام کاربری</span>
+                <div class="box">
+                    <div class="icon"><ion-icon name="person-add"></ion-icon></div>
+                   {{form.username}}
+                </div>
+            </div>
+ 
+
+            <!-- box password -->
+            <div class="input_box ">
+                <span>گذرواژه</span>
+                <div class="box">
+                    <div class="icon"><ion-icon name="unlock"></ion-icon></div>
+                    {{form.password|add_class:"input"}}
+                    <i class="uil uil-eye-slash eye toggle"></i>
+                </div>
+            </div>
+       
+            <!-- end of box password -->
+
+            <label for="label">
+                <input type="checkbox" id="label"> مرا بخاطر بسپار
+            </label>
+
+            <!-- click Submit -->
+
+           <div class="input_box">
+                <div class="box">
+                    <input type="submit" value="ورود">
+             
+                </div>
+            
+
+           </div>
+
+           <!-- end of click Submit -->
+
+           <!-- link remember me -->
+           <a href="{% url 'password_reset' %}" class="forgot" style="float:right">فراموشی گذرواژه</a><br>
+           <a href="{% url 'register' %}" class="forgot" style="float:right"> ثبت نام کنید</a>
+           <a href="{% url 'social:begin' 'google-oauth2' %}" class="forgot">ورود با گوگل</a>
+           <!-- end of link -->
+        </form>
+        <!-- end of form begin -->
+    </div>
+
+    <!-- script for icon -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- end of script icon -->
+
+    <!-- script toggle for password -->
+    <script>
+
+
+        const toggle = document.querySelector(".toggle"),
+              input = document.querySelector('.input');
+
+              toggle.addEventListener('click',() =>{
+                if(input.type ==='password'){
+                    input.type = 'text';
+                    toggle.classList.replace("uil-eye-slash","uil-eye");
+                }else{
+                    input.type = "password";
+                    toggle.classList.replace("uil-eye","uil-eye-slash");
+                }
+            })
+    </script>
+    <!-- end of script toggle for password -->
+</body>
+</html>
